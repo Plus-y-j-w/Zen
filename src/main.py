@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from workers import asgi
 
-from src.api.auth import router as auth_router
+from api.auth import router as auth_router
 
 app = FastAPI(
     title="Zen",
