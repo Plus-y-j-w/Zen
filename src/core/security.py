@@ -1,18 +1,19 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
 from jose import jwt
 
-SECRET_KEY = "zen-secret-key"
-ALGORITHM = "HS256"
+from core.config import settings
 
 
 def create_access_token(username: str):
     payload = {
         "sub": username,
-        "exp": datetime.utcnow() + timedelta(hours=24)
+        "exp": datetime.now(timezone.utc)
+        + timedelta(hours=settings.JWT_EXPIRE_HOURS),
     }
 
     return jwt.encode(
         payload,
-        SECRET_KEY,
-        algorithm=ALGORITHM
+        settings.JWT_SECRET,
+        algorithm=settings.JWT_ALGORITHM,
     )
