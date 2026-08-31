@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from src.core.security import create_access_token
+from core.security import create_access_token
 
 router = APIRouter()
 
