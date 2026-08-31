@@ -1,0 +1,19 @@
+.env
+.env.*
+!.env.example
+
+# Local SQLite database
+/data/
+*.db
+*.db-shm
+*.db-wal
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# IDE
+.vscode/
+.idea/
