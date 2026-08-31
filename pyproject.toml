@@ -7,13 +7,13 @@ dependencies = [
     "fastapi",
     "python-jose",
     "python-dotenv",
-    "uvicorn",
 ]
 
 [dependency-groups]
 dev = [
     "pytest",
     "httpx",
+    "uvicorn",
     "workers-py",
     "workers-runtime-sdk",
 ]
