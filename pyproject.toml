@@ -1,0 +1,8 @@
+[project]
+name = "zen"
+version = "0.1.0"
+description = "Zen FastAPI Cloudflare Workers Application"
+requires-python = ">=3.11"
+
+[tool.uvicorn]
+factory = false
