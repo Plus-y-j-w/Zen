@@ -1,4 +1,4 @@
-from src.core.password import hash_password, verify_password
+from core.password import hash_password, verify_password
 
 
 def test_password_hash():
