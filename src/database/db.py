@@ -1,17 +1,32 @@
-class Database:
-    """Zen database abstraction.
+from core.config import settings
+from database.sqlite import SQLiteDatabase
 
-    Later versions will support Cloudflare D1 and SQLite.
+
+class Database:
+    """Database facade.
+
+    Local development uses SQLite. Cloudflare Workers can use the existing
+    D1 adapter without changing API-layer code.
     """
 
     def __init__(self):
-        self.connected = False
+        self.backend = None
 
-    async def connect(self):
-        self.connected = True
+    def connect(self):
+        if self.backend is None:
+            if settings.DATABASE_TYPE.lower() == "sqlite":
+                self.backend = SQLiteDatabase(settings.DATABASE_URL)
+                self.backend.connect()
+            else:
+                from database.d1 import d1
+                self.backend = d1
+        return self.backend
 
-    async def close(self):
-        self.connected = False
+    def close(self):
+        if self.backend is not None and hasattr(self.backend, "close"):
+            self.backend.close()
+            self.backend = None
 
 
- database = Database()
+# Shared database facade for the application.
+database = Database()
