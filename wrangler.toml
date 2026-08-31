@@ -1,6 +1,7 @@
 name = "zen-api"
 main = "src/worker.py"
 compatibility_date = "2026-08-31"
+compatibility_flags = ["python_workers"]
 
 [vars]
 APP_NAME = "Zen"
