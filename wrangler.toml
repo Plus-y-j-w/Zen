@@ -1,0 +1,7 @@
+name = "zen-api"
+main = "src/worker.py"
+compatibility_date = "2026-08-31"
+
+[vars]
+APP_NAME = "Zen"
+JWT_SECRET = "change-this-secret"
