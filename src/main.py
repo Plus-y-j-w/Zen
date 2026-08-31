@@ -1,5 +1,11 @@
 from fastapi import FastAPI
-from workers import asgi
+
+# Cloudflare Workers runtime is only available inside the Workers environment.
+# Keep local pytest/FastAPI execution independent from workers-py.
+try:
+    from workers import asgi
+except ImportError:
+    asgi = None
 
 from api.auth import router as auth_router
 from database.schema import init_db
@@ -35,4 +41,6 @@ async def health():
 
 
 # Cloudflare Python Workers ASGI entrypoint.
-Default = asgi.entrypoint(app)
+# This is skipped during local pytest because workers runtime is unavailable.
+if asgi:
+    Default = asgi.entrypoint(app)
