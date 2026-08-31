@@ -1,6 +1,3 @@
-from typing import Any
-
-
 class Database:
     """Zen database abstraction.
 
