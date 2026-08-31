@@ -7,9 +7,17 @@ client = TestClient(app)
 
 
 def test_login():
+    client.post(
+        '/auth/register',
+        json={
+            'username': 'admin',
+            'password': '123456'
+        }
+    )
+
     response = client.post(
         '/auth/login',
-        params={
+        json={
             'username': 'admin',
             'password': '123456'
         }
