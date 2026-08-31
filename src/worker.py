@@ -1,9 +1,5 @@
-from src.main import app
+from main import app
+from workers import asgi
 
-
-async def fetch(request):
-    return await app(
-        request.scope,
-        request.receive,
-        request.send
-    )
+# Expose the FastAPI application through Cloudflare's native ASGI adapter.
+Default = asgi.entrypoint(app)
