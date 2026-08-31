@@ -5,6 +5,7 @@ description = "Zen FastAPI Cloudflare Workers Application"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi",
+    "python-jose",
 ]
 
 [dependency-groups]
