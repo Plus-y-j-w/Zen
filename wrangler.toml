@@ -1,8 +1,4 @@
 name = "zen"
-main = "src/worker.py"
+main = "src/main.py"
 compatibility_date = "2026-08-31"
 compatibility_flags = ["python_workers"]
-
-[vars]
-APP_NAME = "Zen"
-JWT_SECRET = "change-this-secret"
